@@ -50,14 +50,15 @@ const SubjectSelectionForm: React.FC = () => {
   const cleanURL = (value: string): string => {
     // take in string, replace space values with underscore
     return value.replace(/ /g, '_');
-  };
+  }
 
   const handleSubmit = async () => {
     if (selectedValues.subject && selectedValues.grade) {
       const url = `${process.env.NEXT_PUBLIC_API_URL}/curriculum/generate/${selectedValues.subject}-${selectedValues.grade}`;
-      console.log(cleanURL(url));
       const data = await request(cleanURL(url));
-      console.log(data);
+
+      // set the data in the store
+
     } else {
       alert('Please select all values');
     }

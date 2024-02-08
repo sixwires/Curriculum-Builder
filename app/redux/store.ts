@@ -1,12 +1,14 @@
-import { createStore, combineReducers } from 'redux';
-// import subjectReducer from './reducers/subjectReducer';
-// import gptReducer from './reducers/gptReducer';
+import { configureStore } from '@reduxjs/toolkit';
+import subjectReducer from './reducers/subjectReducers';
 
-const rootReducer = combineReducers({
-  // subject: subjectReducer,
-  // gpt: gptReducer,
+const store = configureStore({
+  reducer: {
+    subject: subjectReducer,
+
+  },
 });
 
-const store = createStore(rootReducer);
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
 export default store;
