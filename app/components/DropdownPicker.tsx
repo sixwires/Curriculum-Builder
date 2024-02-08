@@ -1,7 +1,6 @@
-"use client";
+'use client';
 
 import React, { useState } from 'react';
-
 
 interface DropdownPickerProps {
   label: string;
@@ -19,13 +18,24 @@ const DropdownPicker: React.FC<DropdownPickerProps> = ({ label, subjects, onChan
 
   return (
     <div className='flex flex-row py-1'>
-      <label htmlFor="options" className='w-32'>{label}: </label>
-      <select id="options" value={selectedOption} onChange={handleSelectChange} className='text-black w-44 rounded-sm outline-none'>
-        <option value="" disabled>Select a subject</option>
+      <label htmlFor='options' className='w-32'>
+        {label}:{' '}
+      </label>
+      <select
+        id='options'
+        value={selectedOption}
+        onChange={handleSelectChange}
+        className='text-black w-44 rounded-sm outline-none'
+      >
+        <option value='' disabled>
+          Select a subject
+        </option>
         {subjects.map((subject) => (
-          <option key={subject} value={subject}>{subject}</option>
+          <option key={subject} value={subject}>
+            {subject}
+          </option>
         ))}
-        <option value="custom">Custom</option>
+        <option value='custom'>Custom</option>
       </select>
     </div>
   );

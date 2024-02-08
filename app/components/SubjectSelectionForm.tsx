@@ -1,5 +1,6 @@
-"use client";
+'use client';
 import React, { useState } from 'react';
+import request from '../utils/requestWrapper';
 import DropdownPicker from './DropdownPicker';
 
 const subjects: Array<string> = [
@@ -15,10 +16,10 @@ const subjects: Array<string> = [
   'Computer Science',
   'Foreign Language',
   'Health',
-]
+];
 
 const grades: Array<string> = [
-  'Kindergarten (K)',
+  'Kindergarten',
   '1st Grade',
   '2nd Grade',
   '3rd Grade',
@@ -33,55 +34,54 @@ const grades: Array<string> = [
   '12th Grade (Senior)',
 ];
 
-
-
 const SubjectSelectionForm: React.FC = () => {
   const [selectedValues, setSelectedValues] = useState({
     subject: '',
     grade: '',
   });
 
-  const handleDropdownChange = (subject: string, value: string) => {
+  const handleDropdownChange = (subject: string, value: string): void => {
     setSelectedValues((prevValues) => ({
       ...prevValues,
       [subject]: value,
     }));
   };
 
-  const handleSubmit = () => {
+  const cleanURL = (value: string): string => {
+    // take in string, replace space values with underscore
+    return value.replace(/ /g, '_');
+  };
+
+  const handleSubmit = async () => {
     if (selectedValues.subject && selectedValues.grade) {
-      // Alert the window with the chosen values
-      alert(`Chosen values: ${selectedValues.subject}, ${selectedValues.grade}`);
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/curriculum/generate/${selectedValues.subject}-${selectedValues.grade}`;
+      console.log(cleanURL(url));
+      const data = await request(cleanURL(url));
+      console.log(data);
     } else {
       alert('Please select all values');
     }
   };
 
-  const isSubmitDisabled =
-    !selectedValues.subject || !selectedValues.grade;
+  const isSubmitDisabled = !selectedValues.subject || !selectedValues.grade;
 
   return (
     <div>
       <DropdownPicker
-        label="Select Subject"
+        label='Select Subject'
         subjects={subjects}
         onChange={(value) => handleDropdownChange('subject', value)}
       />
 
       {selectedValues.subject && (
         <DropdownPicker
-          label="Select Grade"
+          label='Select Grade'
           subjects={grades}
           onChange={(value) => handleDropdownChange('grade', value)}
         />
       )}
 
-      <button
-        type="button"
-        onClick={handleSubmit}
-        disabled={isSubmitDisabled}
-        className='submit'
-      >
+      <button type='button' onClick={handleSubmit} disabled={isSubmitDisabled} className='submit'>
         Submit
       </button>
     </div>
