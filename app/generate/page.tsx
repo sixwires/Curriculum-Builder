@@ -1,18 +1,14 @@
-'use client';
+import Curriculum from './features/curriculum/Curriculum';
 import SubjectSelectionForm from './features/selection/SubjectSelectionForm';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store';
 
 export default function Generate() {
-  const curriculumData = useSelector((state: RootState) => state.curriculum.data);
-
   return (
     <div>
       <h1 className='text-xl'>Generate Page</h1>
-      <div className='p-4'>
+      <section className='flex flex-col md:flex-row px-4 h-screen'>
         <SubjectSelectionForm />
-        <pre>{JSON.stringify(curriculumData, null, 2)}</pre>
-      </div>
+        <Curriculum />
+      </section>
     </div>
   );
 }

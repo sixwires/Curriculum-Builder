@@ -70,7 +70,7 @@ const SubjectSelectionForm: React.FC = () => {
   const isSubmitDisabled = !selectedValues.subject || !selectedValues.grade;
 
   return (
-    <div>
+    <section>
       <DropdownPicker
         label='Select Subject'
         subjects={subjects}
@@ -88,7 +88,7 @@ const SubjectSelectionForm: React.FC = () => {
       <button type='button' onClick={handleSubmit} disabled={isSubmitDisabled} className='submit'>
         Submit
       </button>
-    </div>
+    </section>
   );
 };
 
