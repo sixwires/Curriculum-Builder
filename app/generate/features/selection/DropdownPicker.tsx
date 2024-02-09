@@ -7,7 +7,11 @@ interface DropdownPickerProps {
   onChange: (value: string) => void;
 }
 
-const DropdownPicker = ({ label, subjects, onChange }: DropdownPickerProps) => {
+const DropdownPicker: React.FC<DropdownPickerProps> = ({
+  label,
+  subjects,
+  onChange,
+}: DropdownPickerProps) => {
   const [selectedOption, setSelectedOption] = useState('');
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

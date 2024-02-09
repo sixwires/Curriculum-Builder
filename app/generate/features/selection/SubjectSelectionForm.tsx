@@ -36,7 +36,7 @@ const grades: Array<string> = [
   '12th Grade (Senior)',
 ];
 
-const SubjectSelectionForm = () => {
+const SubjectSelectionForm: React.FC = () => {
   const dispatch = useDispatch();
   const [selectedValues, setSelectedValues] = useState({
     subject: '',

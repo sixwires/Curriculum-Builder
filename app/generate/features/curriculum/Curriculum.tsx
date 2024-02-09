@@ -1,24 +1,17 @@
 'use client';
+import { Suspense, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
+import LoadingSpinner from '@/common/LoadingSpinner';
 
-const Curriculum = () => {
+const Curriculum: React.FC = () => {
   const curriculumData = useSelector((state: RootState) => state.curriculum.data);
 
   return (
     <section className='h-full overflow-auto'>
-      <pre>{JSON.stringify(curriculumData, null, 2)}</pre>
+      {curriculumData != null ? JSON.stringify(curriculumData) : <LoadingSpinner></LoadingSpinner>}
     </section>
   );
 };
 
-/*
-const res = JSON.parse(xhr.responseText);
-
-for (const key in res){
-  if(obj.hasOwnProperty(key)){
-    console.log(`${key} : ${res[key]}`)
-  }
-}
-*/
 export default Curriculum;
