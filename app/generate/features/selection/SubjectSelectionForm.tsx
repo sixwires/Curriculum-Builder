@@ -3,7 +3,7 @@ import { useState } from 'react';
 import request from '../../../utils/requestWrapper';
 import DropdownPicker from './DropdownPicker';
 import { useDispatch } from 'react-redux';
-import { setData } from '../curriculum/curriculumSlice';
+import { setData, setLoading } from '../curriculum/curriculumSlice';
 
 const subjects: Array<string> = [
   'Mathematics',
@@ -57,6 +57,7 @@ const SubjectSelectionForm: React.FC = () => {
 
   const handleSubmit = async () => {
     if (selectedValues.subject && selectedValues.grade) {
+      dispatch(setLoading(true));
       const url = `${process.env.NEXT_PUBLIC_API_URL}/curriculum/generate/${selectedValues.subject}-${selectedValues.grade}`;
       const data = await request(cleanURL(url));
 
@@ -65,6 +66,7 @@ const SubjectSelectionForm: React.FC = () => {
     } else {
       alert('Please select all values');
     }
+    dispatch(setLoading(false));
   };
 
   const isSubmitDisabled = !selectedValues.subject || !selectedValues.grade;

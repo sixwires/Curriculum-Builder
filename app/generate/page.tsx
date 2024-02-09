@@ -3,9 +3,9 @@ import SubjectSelectionForm from './features/selection/SubjectSelectionForm';
 
 const Generate: React.FC = () => {
   return (
-    <div>
+    <div className='h-full'>
       <h1 className='text-xl'>Generate Page</h1>
-      <section className='flex flex-col md:flex-row px-4 h-screen'>
+      <section className='flex flex-col lg:flex-row px-4'>
         <SubjectSelectionForm />
         <Curriculum />
       </section>
