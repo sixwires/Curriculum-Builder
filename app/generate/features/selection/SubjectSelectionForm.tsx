@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import request from '../utils/requestWrapper';
+import request from '../../../utils/requestWrapper';
 import DropdownPicker from './DropdownPicker';
 
 const subjects: Array<string> = [
@@ -50,7 +50,7 @@ const SubjectSelectionForm: React.FC = () => {
   const cleanURL = (value: string): string => {
     // take in string, replace space values with underscore
     return value.replace(/ /g, '_');
-  }
+  };
 
   const handleSubmit = async () => {
     if (selectedValues.subject && selectedValues.grade) {
@@ -58,7 +58,6 @@ const SubjectSelectionForm: React.FC = () => {
       const data = await request(cleanURL(url));
 
       // set the data in the store
-
     } else {
       alert('Please select all values');
     }

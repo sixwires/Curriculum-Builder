@@ -1,5 +1,5 @@
 import React from 'react';
-import SidebarComponent from './components/SideBar';
+import SidebarComponent from './common/SideBar';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';

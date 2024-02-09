@@ -1,8 +1,7 @@
 import React from 'react';
-import SubjectSelectionForm from '../components/SubjectSelectionForm';
+import SubjectSelectionForm from './features/selection/SubjectSelectionForm';
 
 export default function Generate() {
-
   return (
     <div>
       <h1 className='text-xl'>Generate Page</h1>
