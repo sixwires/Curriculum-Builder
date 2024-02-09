@@ -1,7 +1,7 @@
 // redux/store.ts
 
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import curriculumReducer from './generate/features/selection/curriculumSlice';
+import curriculumReducer from './generate/features/curriculum/curriculumSlice';
 
 const store = configureStore({
   reducer: {

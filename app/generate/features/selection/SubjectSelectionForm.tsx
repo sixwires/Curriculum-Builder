@@ -1,7 +1,9 @@
 'use client';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import request from '../../../utils/requestWrapper';
 import DropdownPicker from './DropdownPicker';
+import { useDispatch } from 'react-redux';
+import { setData } from '../curriculum/curriculumSlice';
 
 const subjects: Array<string> = [
   'Mathematics',
@@ -35,6 +37,7 @@ const grades: Array<string> = [
 ];
 
 const SubjectSelectionForm: React.FC = () => {
+  const dispatch = useDispatch();
   const [selectedValues, setSelectedValues] = useState({
     subject: '',
     grade: '',
@@ -58,6 +61,7 @@ const SubjectSelectionForm: React.FC = () => {
       const data = await request(cleanURL(url));
 
       // set the data in the store
+      dispatch(setData(data.response));
     } else {
       alert('Please select all values');
     }

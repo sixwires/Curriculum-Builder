@@ -1,4 +1,3 @@
-import React from 'react';
 import SidebarComponent from './common/SideBar';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -8,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Curriculum Builder',
-  description: '',
+  description: 'Build your classroom curriculum using AI assistance.',
 };
 
 export default function RootLayout({
