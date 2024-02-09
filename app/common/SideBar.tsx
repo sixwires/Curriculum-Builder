@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const SidebarComponent: React.FC = () => {
+const SidebarComponent = () => {
   return (
     <div className='flex flex-col w-32 h-screen p-4 bg-background-dark'>
       <Link href='/'>

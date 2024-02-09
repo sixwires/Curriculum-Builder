@@ -1,7 +1,7 @@
 import Curriculum from './features/curriculum/Curriculum';
 import SubjectSelectionForm from './features/selection/SubjectSelectionForm';
 
-export default function Generate() {
+const Generate = () => {
   return (
     <div>
       <h1 className='text-xl'>Generate Page</h1>
@@ -11,4 +11,6 @@ export default function Generate() {
       </section>
     </div>
   );
-}
+};
+
+export default Generate;

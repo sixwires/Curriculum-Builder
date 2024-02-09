@@ -1,9 +1,8 @@
 'use client';
-import SubjectSelectionForm from '../selection/SubjectSelectionForm';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 
-export default function Curriculum() {
+const Curriculum = () => {
   const curriculumData = useSelector((state: RootState) => state.curriculum.data);
 
   return (
@@ -11,7 +10,7 @@ export default function Curriculum() {
       <pre>{JSON.stringify(curriculumData, null, 2)}</pre>
     </section>
   );
-}
+};
 
 /*
 const res = JSON.parse(xhr.responseText);
@@ -22,3 +21,4 @@ for (const key in res){
   }
 }
 */
+export default Curriculum;
