@@ -28,7 +28,7 @@ const DropdownPicker: React.FC<DropdownPickerProps> = ({
         id='options'
         value={selectedOption}
         onChange={handleSelectChange}
-        className='text-black w-44 rounded-sm outline-none'
+        className='text-black w-44 h-6 rounded-sm outline-none'
       >
         <option value='' disabled>
           Select a subject

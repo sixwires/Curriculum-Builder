@@ -4,6 +4,7 @@ import request from '../../../utils/requestWrapper';
 import DropdownPicker from './DropdownPicker';
 import { useDispatch } from 'react-redux';
 import { setData, setLoading } from '../curriculum/curriculumSlice';
+import InputSelector from './InputSelector';
 
 const subjects: Array<string> = [
   'Mathematics',
@@ -41,9 +42,10 @@ const SubjectSelectionForm: React.FC = () => {
   const [selectedValues, setSelectedValues] = useState({
     subject: '',
     grade: '',
+    numUnits: -1,
   });
 
-  const handleDropdownChange = (subject: string, value: string): void => {
+  const handleInputChange = (subject: string, value: string): void => {
     setSelectedValues((prevValues) => ({
       ...prevValues,
       [subject]: value,
@@ -69,23 +71,27 @@ const SubjectSelectionForm: React.FC = () => {
     dispatch(setLoading(false));
   };
 
-  const isSubmitDisabled = !selectedValues.subject || !selectedValues.grade;
+  const isSubmitDisabled =
+    !selectedValues.subject || !selectedValues.grade || selectedValues.numUnits == -1;
 
   return (
     <section>
       <DropdownPicker
         label='Select Subject'
         subjects={subjects}
-        onChange={(value) => handleDropdownChange('subject', value)}
+        onChange={(value) => handleInputChange('subject', value)}
       />
 
-      {selectedValues.subject && (
-        <DropdownPicker
-          label='Select Grade'
-          subjects={grades}
-          onChange={(value) => handleDropdownChange('grade', value)}
-        />
-      )}
+      <DropdownPicker
+        label='Select Grade'
+        subjects={grades}
+        onChange={(value) => handleInputChange('grade', value)}
+      />
+
+      <InputSelector
+        label='Number of units'
+        onChange={(value) => handleInputChange('numUnits', value)}
+      />
 
       <button type='button' onClick={handleSubmit} disabled={isSubmitDisabled} className='submit'>
         Submit
