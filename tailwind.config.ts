@@ -12,6 +12,7 @@ const config: Config = {
         foreground: 'rgb(255, 255, 255)',
         background: 'rgb(41, 44, 51)',
         'background-dark': 'rgb(33, 35, 41)',
+        disabled: 'rgb(87 83 78)',
       },
     },
   },

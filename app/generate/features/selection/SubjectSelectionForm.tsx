@@ -1,9 +1,9 @@
 'use client';
 import { useState } from 'react';
-import { postData } from '../../../utils/requestWrapper';
-import DropdownPicker from './DropdownPicker';
 import { useDispatch } from 'react-redux';
+import { postData } from '@/utils/requestWrapper';
 import { setData, setLoading } from '../curriculum/curriculumSlice';
+import DropdownPicker from './DropdownPicker';
 import InputSelector from './InputSelector';
 
 const subjects: Array<string> = [
@@ -75,7 +75,7 @@ const SubjectSelectionForm: React.FC = () => {
     !selectedValues.subject || !selectedValues.grade || selectedValues.numUnits == -1;
 
   return (
-    <section>
+    <section className='grow'>
       <DropdownPicker
         label='Select Subject'
         subjects={subjects}
@@ -93,7 +93,12 @@ const SubjectSelectionForm: React.FC = () => {
         onChange={(value) => handleInputChange('numUnits', value)}
       />
 
-      <button type='button' onClick={handleSubmit} disabled={isSubmitDisabled} className='submit'>
+      <button
+        type='button'
+        onClick={handleSubmit}
+        disabled={isSubmitDisabled}
+        className={'my-2 ' + (isSubmitDisabled ? 'disabled' : 'submit')}
+      >
         Submit
       </button>
     </section>

@@ -8,12 +8,11 @@ const Curriculum: React.FC = () => {
   const isLoading = useSelector((state: RootState) => state.curriculum.loading);
 
   return (
-    <>
+    <section className='flex flex-col grow pb-8 lg:mx-4 lg:my-0'>
+      {isLoading ? <LoadingSpinner></LoadingSpinner> : null}
       {curriculumData && (
-        <section className='flex flex-col my-2 lg:mx-4 lg:my-0'>
-          <h1 className='text-lg'>Generated Curriculum:</h1>
-          <section className='h-full overflow-auto bg-background-dark p-2 rounded'>
-            {isLoading ? <LoadingSpinner></LoadingSpinner> : null}
+        <>
+          <section className='overflow-auto bg-background-dark p-2 rounded'>
             {!isLoading && curriculumData && (
               <div>
                 {Object.keys(curriculumData).map((topic: string, index: number) => (
@@ -29,9 +28,9 @@ const Curriculum: React.FC = () => {
               </div>
             )}
           </section>
-        </section>
+        </>
       )}
-    </>
+    </section>
   );
 };
 

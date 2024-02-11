@@ -26,9 +26,20 @@ body {
     text-wrap: balance;
   }
 
-  button.submit {
+  button {
     padding: 2px 8px;
     border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button.submit {
     background-color: #f85a3e;
+  }
+
+  button.disabled {
+    background-color: rgb(235, 235, 228);
+    color: rgb(87 83 78);
+    opacity: 0.3;
+    cursor: default;
   }
 }

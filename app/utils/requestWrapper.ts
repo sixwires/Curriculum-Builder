@@ -1,5 +1,4 @@
 const getData = async (url: string, options = {}) => {
-  console.log(options);
   try {
     const response = await fetch(url, options);
 
