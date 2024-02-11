@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import request from '../../../utils/requestWrapper';
+import { postData } from '../../../utils/requestWrapper';
 import DropdownPicker from './DropdownPicker';
 import { useDispatch } from 'react-redux';
 import { setData, setLoading } from '../curriculum/curriculumSlice';
@@ -52,22 +52,22 @@ const SubjectSelectionForm: React.FC = () => {
     }));
   };
 
-  const cleanURL = (value: string): string => {
-    // take in string, replace space values with underscore
-    return value.replace(/ /g, '_');
-  };
-
   const handleSubmit = async () => {
     if (selectedValues.subject && selectedValues.grade) {
-      dispatch(setLoading(true));
-      const url = `${process.env.NEXT_PUBLIC_API_URL}/curriculum/generate/${selectedValues.subject}-${selectedValues.grade}`;
-      const data = await request(cleanURL(url));
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/curriculum/generate/`;
+      const body = {
+        subject: selectedValues.subject,
+        grade: selectedValues.grade,
+        units: selectedValues.numUnits,
+      };
 
-      // set the data in the store
+      dispatch(setLoading(true));
+      const data = await postData(url, body);
       dispatch(setData(data.response));
     } else {
       alert('Please select all values');
     }
+
     dispatch(setLoading(false));
   };
 

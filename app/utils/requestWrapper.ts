@@ -1,4 +1,5 @@
-const request = async (url: string, options = {}) => {
+const getData = async (url: string, options = {}) => {
+  console.log(options);
   try {
     const response = await fetch(url, options);
 
@@ -6,10 +7,24 @@ const request = async (url: string, options = {}) => {
       throw new Error(response.statusText);
     }
 
-    return await response.json();
+    return response.json();
   } catch (error: any) {
     throw new Error(`Request failed: ${error.message}`);
   }
 };
 
-export default request;
+async function postData(url = '', body = {}) {
+  var myHeaders = new Headers();
+  myHeaders.append('Content-Type', 'application/json');
+
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: JSON.stringify(body),
+  };
+
+  const response = await fetch(url, requestOptions);
+  return response.json();
+}
+
+export { getData, postData };

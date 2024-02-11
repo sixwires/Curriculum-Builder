@@ -20,7 +20,7 @@ const DropdownPicker: React.FC<DropdownPickerProps> = ({
   };
 
   return (
-    <div className='flex flex-row py-1'>
+    <div className='flex flex-col py-1'>
       <label htmlFor='options' className='w-32'>
         {label}:{' '}
       </label>

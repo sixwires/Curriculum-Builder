@@ -15,7 +15,7 @@ const InputSelector: React.FC<InputSelectorProps> = ({ label, onChange }: InputS
   };
 
   return (
-    <div className='flex flex-row py-1'>
+    <div className='flex flex-col py-1'>
       <label htmlFor='values' className='w-32'>
         {label}:{' '}
       </label>
