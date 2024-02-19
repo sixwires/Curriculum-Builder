@@ -34,17 +34,17 @@ export const { setData, setLoading, setError } = curriculumSlice.actions;
 export default curriculumSlice.reducer;
 
 // Async action to fetch curriculum data from an API
-export const fetchCurriculumData = (): AppThunk => async (dispatch) => {
-  dispatch(setLoading(true));
-  try {
-    const response = await fetch('https://api.example.com/curriculum');
-    if (!response.ok) {
-      throw new Error('Failed to fetch curriculum data');
-    }
-    const data = await response.json();
-    dispatch(setData(data));
-  } catch (error: any) {
-    dispatch(setError(error.message));
-  }
-  dispatch(setLoading(false));
-};
+// export const fetchCurriculumData = (): AppThunk => async (dispatch) => {
+//   dispatch(setLoading(true));
+//   try {
+//     const response = await fetch('https://api.example.com/curriculum');
+//     if (!response.ok) {
+//       throw new Error('Failed to fetch curriculum data');
+//     }
+//     const data = await response.json();
+//     dispatch(setData(data));
+//   } catch (error: any) {
+//     dispatch(setError(error.message));
+//   }
+//   dispatch(setLoading(false));
+// };
